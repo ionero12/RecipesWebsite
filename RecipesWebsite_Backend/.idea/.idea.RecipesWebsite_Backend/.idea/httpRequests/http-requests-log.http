@@ -1,0 +1,35 @@
+POST https://localhost:7117/api/RecipesApi/RecipeByIngredients
+Content-Type: application/json
+Content-Length: 54
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2024.1.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+x-http2-scheme: https
+
+{
+  "ingredients": [
+    "ceapă",
+    "usturoi"
+  ]
+}
+
+<> 2024-07-10T193906.400.json
+
+###
+
+POST https://localhost:7117/api/RecipesApi/RecipeByIngredients
+Content-Type: application/json
+Content-Length: 41
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2024.1.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+x-http2-scheme: https
+
+{
+  "ingredients": ["ceapa", "usturoi"]
+}
+
+<> 2024-07-10T193803.400.json
+
+###
+

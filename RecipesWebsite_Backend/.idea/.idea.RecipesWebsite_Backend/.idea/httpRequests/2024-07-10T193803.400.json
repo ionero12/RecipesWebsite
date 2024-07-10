@@ -1,0 +1,14 @@
+{
+  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "errors": {
+    "$": [
+      "The JSON value could not be converted to System.Collections.Generic.List`1[System.String]. Path: $ | LineNumber: 0 | BytePositionInLine: 1."
+    ],
+    "ingredients": [
+      "The ingredients field is required."
+    ]
+  },
+  "traceId": "00-f049a194583e5057487f1bd154cdba62-f1bf6c5674521666-00"
+}
