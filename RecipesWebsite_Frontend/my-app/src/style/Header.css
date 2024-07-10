@@ -1,0 +1,31 @@
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px; /* spațiere între linkuri */
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #fff; /* Culoarea inițială a textului */
+}
+
+.nav-link:hover {
+    color: #a6a3a6; /* Culoarea la hover */
+}
+
+.contact-link {
+    cursor: pointer;
+}

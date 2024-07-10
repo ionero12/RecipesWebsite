@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+.py-4 {
+    background-color: #b7d3ef; /* Culoare de fundal */
+    padding-top: 50px; /* Spațiu de sus pentru secțiune */
+    padding-bottom: 50px; /* Spațiu de jos pentru secțiune */
+    background-image: radial-gradient(circle, #e5b2b2 1px, transparent 1px); /* Pattern cu puncte mici albe */
+    background-size: 20px 20px; /* Dimensiunea pattern-ului */
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* asigură-te că imaginea nu iese în afara cardului */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text {
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif; /* Font pentru text */
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 300px;
+}
+
+.button-group .custom-button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.button-group .custom-button:nth-child(1) {
+    background-color: #d03817; /* roșu */
+    color: white;
+}
+
+.button-group .custom-button:nth-child(2) {
+    background-color: #1594cc; /* albastru */
+    color: white;
+}
+
+.button-group .custom-button:nth-child(3) {
+    background-color: #14d236; /* verde */
+    color: white;
+}
+
+.section-title {
+    font-size: 48px;
+    font-family: 'Copperplate', fantasy;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.section-text {
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif; /* Font pentru text */
+    color: #555;
+    line-height: 1.6;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.custom-button {
+    background-color: #ff7f50;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: #ff6347;
+}
