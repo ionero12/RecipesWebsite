@@ -12,7 +12,7 @@ function RecipeByIngredients() {
 
     const handleSearch = async () => {
         try {
-            const response = await axios.get('https://localhost:7117/api/RecipesApi/RecipeByIngredients', {
+            const response = await axios.get('https://localhost:7094/api/Recipes/RecipeByIngredients', {
                 params: {ingredients}
             });
             setRecipes(response.data);

@@ -14,7 +14,7 @@ function RecipeDetail() {
     useEffect(() => {
         const fetchRecipe = async (idRecipe) => {
             try {
-                const response = await fetch(`https://localhost:7117/api/RecipesApi/${idRecipe}`, {
+                const response = await fetch(`https://localhost:7094/api/Recipes/${idRecipe}`, {
                     method: 'GET', headers: {
                         'Content-Type': 'application/json',
                     },
@@ -33,7 +33,7 @@ function RecipeDetail() {
 
         const fetchIngredients = async (idRecipe) => {
             try {
-                const response = await fetch(`https://localhost:7117/api/IngredientsApi/ByRecipe/${idRecipe}`, {
+                const response = await fetch(`https://localhost:7094/api/Ingredients/ByRecipe/${idRecipe}`, {
                     method: 'GET', headers: {
                         'Content-Type': 'application/json',
                     },
@@ -57,7 +57,7 @@ function RecipeDetail() {
 
         const fetchSteps = async (idRecipe) => {
             try {
-                const response = await fetch(`https://localhost:7117/api/StepsApi/ByRecipe/${idRecipe}`, {
+                const response = await fetch(`https://localhost:7094/api/Steps/ByRecipe/${idRecipe}`, {
                     method: 'GET', headers: {
                         'Content-Type': 'application/json',
                     },

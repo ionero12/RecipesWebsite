@@ -29,6 +29,12 @@
     font-family: 'Open Sans', sans-serif; /* Font pentru text */
 }
 
+.favorite-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
 .btn-group {
     display: flex;
     justify-content: center;

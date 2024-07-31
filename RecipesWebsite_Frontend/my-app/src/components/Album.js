@@ -9,11 +9,12 @@ import Subsol from './Subsol';
 function Album() {
     const [categories, setCategories] = useState([]);
     const [filteredRecipes, setFilteredRecipes] = useState([]);
+    const [favorites, setFavorites] = useState({});
 
     useEffect(() => {
         const fetchRecipes = async () => {
             try {
-                const response = await fetch('https://localhost:7117/api/RecipesApi', {
+                const response = await fetch('https://localhost:7094/api/Recipes', {
                     method: 'GET', headers: {
                         'Content-Type': 'application/json',
                     },
@@ -25,7 +26,6 @@ function Album() {
 
                 const data = await response.json();
                 setFilteredRecipes(data);
-                console.log(data);
             } catch (error) {
                 console.error('Error fetching recipes', error);
             }
@@ -33,7 +33,7 @@ function Album() {
 
         const fetchCategories = async () => {
             try {
-                const response = await fetch('https://localhost:7117/api/CategoriesApi', {
+                const response = await fetch('https://localhost:7094/api/Categories', {
                     method: 'GET', headers: {
                         'Content-Type': 'application/json',
                     },
@@ -45,7 +45,6 @@ function Album() {
 
                 const data = await response.json();
                 setCategories(data);
-                console.log(data);
             } catch (error) {
                 console.error('Error fetching categories', error);
             }
@@ -57,7 +56,7 @@ function Album() {
 
     const fetchFilteredRecipes = async (idCategory) => {
         try {
-            const response = await fetch(`https://localhost:7117/api/RecipesApi/RecipesByCategory/${idCategory}`, {
+            const response = await fetch(`https://localhost:7094/api/Recipes/RecipesByCategory/${idCategory}`, {
                 method: 'GET', headers: {
                     'Content-Type': 'application/json',
                 },
@@ -69,11 +68,26 @@ function Album() {
 
             const data = await response.json();
             setFilteredRecipes(data);
-            console.log(data);
         } catch (error) {
             console.error('Error fetching filtered recipes', error);
         }
     }
+
+    useEffect(() => {
+        const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
+        setFavorites(storedFavorites);
+    }, []);
+
+    const toggleFavorite = (idRecipe) => {
+        setFavorites(prevFavorites => {
+            const newFavorites = {
+                ...prevFavorites,
+                [idRecipe]: !prevFavorites[idRecipe]
+            };
+            localStorage.setItem('favorites', JSON.stringify(newFavorites));
+            return newFavorites;
+        });
+    };
 
     return (<div>
             <Header/>
@@ -89,17 +103,17 @@ function Album() {
                                 ghida
                                 pas cu pas în bucătărie. Răsfoiți, experimentați și bucurați-vă de arta gătitului!
                             </p>
-                            <p className="button-group">
+                            <div className="button-group d-flex flex-wrap justify-content-center">
                                 {categories.map((category, index) => (
                                     <button
                                         key={category.idCategory}
                                         onClick={() => fetchFilteredRecipes(category.idCategory)}
-                                        className={`btn custom-button my-2`}
+                                        className={`btn custom-button m-2`}
                                     >
                                         {category.categoryName}
                                     </button>
                                 ))}
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -112,11 +126,26 @@ function Album() {
                                     <div className="col" key={recipe.idRecipe}>
                                         <Link to={`/recipe/${recipe.idRecipe}`} className="card-link">
                                             <div className="card shadow-sm">
-                                                <img className="bd-placeholder-img card-img-top"
-                                                     src={`/images/${recipe.recipePhoto}`} alt={recipe.recipeName}
-                                                     width="100%" height="300"/>
+                                                <img
+                                                    className="bd-placeholder-img card-img-top"
+                                                    src={`/images/${recipe.recipePhoto}`}
+                                                    alt={recipe.recipeName}
+                                                    width="100%" height="300"
+                                                />
                                                 <div className="card-body">
-                                                    <p className="card-text">{recipe.recipeName}</p>
+                                                    <p className="card-text">
+                                                        {recipe.recipeName}
+                                                        <span
+                                                            className={`favorite-icon ${favorites[recipe.idRecipe] ? 'favorite' : ''}`}
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                toggleFavorite(recipe.idRecipe);
+                                                            }}
+                                                            style={{ marginLeft: '10px', cursor: 'pointer' }}
+                                                        >
+                                                            {favorites[recipe.idRecipe] ? '❤️' : '🤍'}
+                                                        </span>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </Link>
@@ -134,6 +163,6 @@ function Album() {
             <Subsol/>
         </div>
     );
-}
+};
 
 export default Album;
