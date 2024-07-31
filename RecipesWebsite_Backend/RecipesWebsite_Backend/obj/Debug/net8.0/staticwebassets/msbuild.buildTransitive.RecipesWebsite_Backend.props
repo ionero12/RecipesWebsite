@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\RecipesWebsite_Backend.props" />
-</Project>
