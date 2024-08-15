@@ -12,7 +12,7 @@ builder.Services.AddCors(options =>
         {
             builder
                 .WithOrigins("http://localhost:3000") // specifying the allowed origin // dc nu merge cu adresa ip
-                .WithMethods("GET") // defining the allowed HTTP method
+                .AllowAnyMethod()  // defining the allowed HTTP method
                 .AllowAnyHeader() // allowing any header to be sent
                 .AllowCredentials(); // Ensure credentials are allowed if needed
         });
@@ -35,6 +35,9 @@ builder.Services.AddScoped<IIngredientService, IngredientService>();
 builder.Services.AddScoped<IIngredientRepository, IngredientRepository>();
 builder.Services.AddScoped<IStepService, StepService>();
 builder.Services.AddScoped<IStepRepository, StepRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 

@@ -78,15 +78,39 @@ function Album() {
         setFavorites(storedFavorites);
     }, []);
 
-    const toggleFavorite = (idRecipe) => {
-        setFavorites(prevFavorites => {
-            const newFavorites = {
-                ...prevFavorites,
-                [idRecipe]: !prevFavorites[idRecipe]
-            };
-            localStorage.setItem('favorites', JSON.stringify(newFavorites));
-            return newFavorites;
-        });
+    const toggleFavorite = async (idRecipe) => {
+        const userId = localStorage.getItem('userId');
+
+        if (!userId) {
+            console.error('User is not logged in.');
+            return;
+        }
+
+        try {
+            const response = await fetch('https://localhost:7094/api/Favorites/toggle', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId, recipeId: idRecipe }),
+            });
+
+            if (!response.ok) {
+                console.error(`HTTP error! status: ${response.status}`);
+                return;
+            }
+
+            setFavorites(prevFavorites => {
+                const newFavorites = {
+                    ...prevFavorites,
+                    [idRecipe]: !prevFavorites[idRecipe]
+                };
+                localStorage.setItem('favorites', JSON.stringify(newFavorites));
+                return newFavorites;
+            });
+        } catch (error) {
+            console.error('Error updating favorite', error);
+        }
     };
 
     return (<div>
