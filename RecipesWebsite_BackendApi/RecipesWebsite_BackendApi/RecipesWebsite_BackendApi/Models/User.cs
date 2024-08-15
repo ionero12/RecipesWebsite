@@ -8,6 +8,7 @@ public class User
 {
     public User()
     {
+        UserFavorites = new List<UserFavorite>(); 
     }
 
     public User(int idUser, string email, string password, List<UserFavorite> userFavorites)
@@ -15,7 +16,7 @@ public class User
         IdUser = idUser;
         Email = email;
         Password = password;
-        UserFavorites = userFavorites;
+        UserFavorites = userFavorites ?? new List<UserFavorite>(); 
     }
 
     [Column("id_user")] public int IdUser { get; set; }
