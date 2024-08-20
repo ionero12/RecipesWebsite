@@ -4,4 +4,5 @@ This a personal blog where I share my favorite recipes. Whether you're looking f
 
 ### Features
 Recipe Blog: Browse through a variety of recipes with clear instructions and photos.
+
 Ingredient Search: Enter ingredients you have on hand to find recipes that match.
