@@ -14,7 +14,7 @@ function Album() {
     useEffect(() => {
         const fetchRecipes = async () => {
             try {
-                const response = await fetch('https://localhost:7094/api/Recipes', {
+                const response = await fetch('http://localhost:5000/api/Recipes', {
                     method: 'GET', headers: {
                         'Content-Type': 'application/json',
                     },
@@ -33,7 +33,7 @@ function Album() {
 
         const fetchCategories = async () => {
             try {
-                const response = await fetch('https://localhost:7094/api/Categories', {
+                const response = await fetch('http://localhost:5000/api/Categories', {
                     method: 'GET', headers: {
                         'Content-Type': 'application/json',
                     },
@@ -56,7 +56,7 @@ function Album() {
 
     const fetchFilteredRecipes = async (idCategory) => {
         try {
-            const response = await fetch(`https://localhost:7094/api/Recipes/RecipesByCategory/${idCategory}`, {
+            const response = await fetch(`http://localhost:5000/api/Recipes/RecipesByCategory/${idCategory}`, {
                 method: 'GET', headers: {
                     'Content-Type': 'application/json',
                 },
@@ -87,7 +87,7 @@ function Album() {
         }
 
         try {
-            const response = await fetch('https://localhost:7094/api/Favorites/toggle', {
+            const response = await fetch('http://localhost:5000/api/Favorites/toggle', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

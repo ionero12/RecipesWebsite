@@ -29,7 +29,7 @@ function Favorites() {
 
     const fetchRecipeById = async (idRecipe) => {
         try {
-            const response = await fetch(`https://localhost:7094/api/Recipes/${idRecipe}`, {
+            const response = await fetch(`http://localhost:5000/api/Recipes/${idRecipe}`, {
                 method: 'GET', headers: {
                     'Content-Type': 'application/json',
                 },
